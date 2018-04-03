@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <title>One to click</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery.formstyler.css" rel="stylesheet">
+    <link href="css/select2.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/media.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<section class="first inner">
+    <header class="inner-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 logo">
+                    <a href="#" class="bt-menu-trigger visible-xs" id="codrops-nav"
+                       data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body"><span>Menu</span></a>
+                    <a href="index.html" class="logo-con">
+                        <img src="img/logo.png" alt="" class="hidden-xs">
+                        <img src="img/mob-logo.png" alt="" class="visible-xs">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 phone hidden-xs">
+                    <p>Звоните нам:</p>
+                    <span>8 800 500 3535</span>
+                    <p>Звонок по Росии бесплатный</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 login hidden-xs">
+                    <button>ВОЙТИ</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="hidden-xs main-nav inner-nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul>
+                        <li><a href="">Проверка карты</a></li>
+                        <li><a href="">Оплата</a></li>
+                        <li><a href="">Вопрос-ответ</a></li>
+                        <li><a href="">Отзывы клиентов</a></li>
+                        <li><a href="">Сотрудничество</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+        <div class="user">
+            <a href="" class="user-name">devtimberg</a>
+            <a href="" class="log-out">Выйти</a>
+        </div>
+        <ul>
+            <li><a href="">Проверка карты</a></li>
+            <li><a href="">Оплата</a></li>
+            <li><a href="">Вопрос-ответ</a></li>
+            <li><a href="">Отзывы клиентов</a></li>
+            <li><a href="">Сотрудничество</a></li>
+        </ul>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 login">
+            <button>ВОЙТИ</button><a href="">Регистрация</a>
+        </div>
+    </nav>
+</section>
+<section class="order-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="order-finish">
+                    <!--<img src="img/finish.png" alt="" style="width: 128px;">-->
+                    <h1><span>Финиш!</span></h1>
+                    <div class="message">
+                        <ul>
+                            <li><img src="img/done.png" alt="">Ваша Диагностическая карта готова! Принята в обработку и ожидает оплаты в личном кабинете.</li>
+                            <li><img src="img/done.png" alt="">На почту <span>devtimberg@gmail.com</span> отправлено письмо с паролем.</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-offset-3 col-md-6 col-sm-12">
+                        <form action="">
+                            <div class="input-con">
+                                <label for="id_FName">Ваш e-mail</label>
+                                <input type="email" id="id_FName" name="id_FName" class="field" required>
+                            </div>
+                            <div class="input-con">
+                                <label for="id_Name">Пароль из письма</label>
+                                <input type="password" id="id_Name" name="id_Name" class="field" required>
+                            </div>
+                            <button class="submit-btn" style="display: inline-block;" type="submit">ВОЙТИ В КАБИНЕТ</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-lg-push-8 col-md-push-8 col-sm-push-8">
+                <p class="f-right">Мы в социальных сетях</p>
+                <div class="soc">
+                    <a href="" class="insta"><img src="img/insta.png" alt=""></a>
+                    <a href="" class="vk"><img src="img/vk.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <p class="a-desc">
+                    Атетстат наших партнеров<br/>
+                    <img src="img/at.png" alt="">
+                </p>
+
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-lg-pull-8 col-md-pull-8 col-sm-pull-8">
+                <a href="" class="f-logo"><img src="img/logo.png" alt=""></a>
+                <p class="f-left">
+                    Наши телефоны: <br/>
+                    +7 (495) 768-18-87 8-800-100-28-87 <br/>
+                    Email: info@to-online.net          <br/>
+                </p>
+                <p class="f-left">
+                    © 2015-2016 <a href="">ONETOCLICK.RU</a>. Все права защищены. <br/>
+                    <a href="">ONETOCLICK.RU</a> - Диагностические карты онлайн на любой автотранспорт с доставкой по всей Россий
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/moment-with-locales.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/jasny-bootstrap.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/jquery.formstyler.min.js"></script>
+<script src="js/select2.full.min.js"></script>
+<script src="js/jquery.maskedinput.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>

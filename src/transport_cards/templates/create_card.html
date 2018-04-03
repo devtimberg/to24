@@ -1,0 +1,330 @@
+{% extends 'base.html' %}
+
+{% block title %}Оформление диагностической карты{% endblock %}
+
+{% block content %}
+    <section class="order-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="order-title">
+                        Оформление диагностической карты
+                    </h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12">
+                    <div class="row">
+                        <div class="col-lg-10 col-lg-offset-1 pro-center">
+                            <div class="progres" style="margin-top: 28px;">
+                                <span class="step-1 active"><div>1</div></span>
+                                <span class="step-2"><div>2</div></span>
+                                <span class="step-3"><div>3</div></span>
+                                <span class="finish">ФИНИШ!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            {{ form.non_field_errors }}
+                            <!--ПЕРВАЯ ФОРМА-->
+                            <form action id="form-create-card" method="post">
+                                {% csrf_token %}
+
+                                <div class="first-step">
+                                    <h4>Сведения о собственнике</h4>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="input-con">
+                                                <label for="id_Name">Фамилия собственника</label>
+                                                <input type="text" id="id_Name" name="Name" class="field" required>
+                                            </div>
+                                            <div class="input-con">
+                                                <label for="id_FName">Имя собственника</label>
+                                                <input type="text" id="id_FName" name="FName" class="field" required>
+                                            </div>
+                                            <div class="input-con">
+                                                <label for="id_MName">Отчество собственника</label>
+                                                <input type="text" id="id_MName" name="MName" class="field" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">
+
+
+                                            <div class="input-con">
+                                                <label for="id_email">Ваш e-mail</label>
+                                                <input type="email" id="id_email" name="email" class="field"
+                                                       required>
+                                            </div>
+
+                                            <div class="input-con"><label for="id_phone">Ваш номер телефона</label>
+                                                <input type="text" id="id_phone" name="phone" class="field"
+                                                       placeholder="+7 (___) ___-____" required>
+                                            </div>
+
+                                            <div class="input-con" style="padding-top: 15px;">
+                                                ВАЖНО! Мы не передаем личные данные третьим лицам, а так же не
+                                                используем контактную
+                                                информацию для рассылки рекламных предложений, акций и т.д.
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12"><a class="submit-btn next-1">СЛЕДУЮЩИЙ ШАГ</a></div>
+                                    </div>
+                                    <!--КОНЕЦ ПЕРВОЙ ФОРМЫ-->
+                                </div>
+
+                                <div class="second-step">
+
+                                    <!--ВТОРАЯ ФОРМА-->
+
+                                    <h4>Сведения о транспортном средстве</h4>
+                                    <div class="row">
+                                        <div class="col-md-3">
+
+                                            <div class="input-con">
+                                                <div class="form-select">
+                                                    <label for="id_VehicleCategory2">Категория ТС</label>
+                                                    <select id="id_VehicleCategory2" name="VehicleCategory2"
+                                                            class="field" required>
+                                                        {% for x, y in form.fields.VehicleCategory2.choices %}
+                                                            <optgroup label="Категория {{ x }}">
+                                                                {% for z, q in y %}
+                                                                    <option value="{{ z }}">
+                                                                    {{ q }}
+                                                                {% endfor %}
+                                                                </option>
+                                                            </optgroup>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-con">
+                                                <label for="id_Make">Марка</label>
+                                                <input type="text" id="id_Make" name="Make" class="field" required>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-con">
+                                                <label for="id_Model">Модель</label>
+                                                <input type="text" name="Model" id="id_Model" class="field" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <div class="input-con">
+                                                <label for="id_Year">Год выпуска</label>
+                                                <input type="number" id="id_Year" name="Year" class="field" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="input-con">
+                                                <label for="id_VIN">Номер VIN</label>
+                                                <input type="text" id="id_VIN" name="VIN" class="field"
+                                                       placeholder="4USB53544LT26841">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="input-con">
+                                                <label for="id_BodyNumber">Номер кузова</label>
+                                                <input type="text" id="id_BodyNumber" name="BodyNumber" class="field"
+                                                       placeholder="">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="input-con">
+                                                <label for="id_FrameNumber">Номер рамы (шасси)</label>
+                                                <input type="text" id="id_FrameNumber" name="FrameNumber"
+                                                       class="field">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="input-con">
+                                                <label for="id_RegistrationNumber">Гос. номер</label>
+                                                <input type="text" name="RegistrationNumber"
+                                                       id="id_RegistrationNumber" class="field" placeholder="A000AA00">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-con">
+                                                <label for="id_Killometrage">Пробег ТС (км)</label>
+                                                <input type="number" name="Killometrage" id="id_Killometrage"
+                                                       class="field" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-con">
+                                                <label for="id_EmptyMass">Масса без нагрузки (кг)</label>
+                                                <input type="number" name="EmptyMass" id="id_EmptyMass" class="field"
+                                                       required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-con">
+                                                <label for="id_MaxMass">Max. масса (кг)</label>
+                                                <input type="text" name="MaxMass" id="id_MaxMass" class="field">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="input-con">
+                                                <div class="form-select">
+                                                    <label for="id_Fuel">Вид топлива ТС</label>
+                                                    <select id="id_Fuel" name="Fuel" class="field" required>
+                                                        {% for x, y in form.fields.Fuel.choices %}
+                                                            <option value="{{ x }}"{% if form.fields.Fuel.value == x %}
+                                                                    selected{% endif %}>{{ y }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-con">
+                                                <div class="form-select">
+                                                    <label for="id_BrakingSystem">Тип привода тормозной системы</label>
+                                                    <select id="id_BrakingSystem" name="BrakingSystem" class="field"
+                                                            required>
+                                                        {% for x, y in form.fields.BrakingSystem.choices %}
+                                                            <option value="{{ x }}"
+                                                                    {% if form.fields.BrakingSystem.value == x %}
+                                                                    selected{% endif %}>{{ y }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="input-con">
+                                                <label for="id_Tyres">Марка шин</label>
+                                                <input type="text" name="Tyres" id="id_Tyres" class="field" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4>Документ на ТС</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-con">
+                                                <div class="form-select">
+                                                    <label for="id_DocumentType">Тип документа</label>
+                                                    <select id="id_DocumentType" name="DocumentType" class="field"
+                                                            required>
+                                                        {% for x, y in form.fields.DocumentType.choices %}
+                                                            <option value="{{ x }}"
+                                                                    {% if form.fields.DocumentType.value == x %}
+                                                                    selected{% endif %}>{{ y }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-con">
+                                                <label for="id_Series">Серия документа</label>
+                                                <input type="text" name="Series" id="id_Series" class="field"
+                                                       placeholder="00 00" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-con">
+                                                <label for="id_Number">Номер документа</label>
+                                                <input type="number" name="Number" id="id_Number" class="field"
+                                                       placeholder="000000" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <div class="input-con">
+                                                <label for="id_Organization">Кем выдан документ</label>
+                                                <input type="text" name="Organization" id="id_Organization"
+                                                       class="field"
+                                                       required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-con">
+                                                <div class="form-group">
+                                                    <label for="id_Date">Дата выдачи</label>
+                                                    <input type='text' id="id_Date" class="form-control field"
+                                                           placeholder="дд.мм.гггг" name="Date" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-3">
+                                            <h4>Выделить, если ТС или собственник:</h4>
+{#                                            <div class="input-con">#}
+{#                                                <div class="form-select">#}
+{#                                                    <label for="id_Foreign">Иностранный гражданин</label>#}
+{#                                                    <select id="id_Foreign" name="Foreign" class="field">#}
+{#                                                    </select>#}
+{#                                                </div>#}
+{#                                            </div>#}
+                                            <div class="input-con">
+                                                <div class="form-select">
+                                                    <label for="id_specials">Особенность ТС</label>
+                                                    <select id="id_specials" name="specials" class="field">
+                                                        {% for x, y in form.fields.specials.choices %}
+                                                            <option value="{{ x }}"{% if form.fields.specials.value == x %}
+                                                                    selected{% endif %}>{{ y }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-12 text-center">
+                                            <a href="" class="back back-1">Шаг назад</a>
+                                            <a class="submit-btn next-2">СЛЕДУЮЩИЙ ШАГ</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!--КОНЕЦ ВТОРОЙ ФОРМЫ-->
+
+                                <div class="third-step">
+                                    <h4>Проверка данных</h4>
+                                    <div class="col-lg-12 text-center" style="margin-bottom: 80px;">
+                                        <div id="results"></div>
+                                        <a href="" class="back back-2">Шаг назад</a>
+                                        <button class="submit-btn" style="display: inline-block;">
+                                            ПОДТВЕРДИТЬ ДАННЫЕ
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}

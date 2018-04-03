@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Оформление Е-ОСАГО {% endblock %}
+
+{% block breadcrumbs %}
+    <li><a href="{% url 'insurance' %}">Оформление Е-ОСАГО</a></li>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" style="margin-top: 35px; margin-bottom: 35px;">
+                <h3 class="order-title">
+                    Оформление Е-ОСАГО
+                </h3>
+            </div>
+        <div class="row">
+            {% for ins in insurance %}
+            <div class="col-lg-3 ins-item">
+                <div class="insurance">
+                    <img src="{{ ins.logotype.url }}" alt="">
+                    <h2>{{ ins.name }}</h2>
+                    <a target="_blank" class="btn" href="{{ ins.url }}">Оформить</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+{% endblock %}
+

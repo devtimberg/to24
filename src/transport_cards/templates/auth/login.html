@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Вход в личный кабинет{% endblock %}
+{% block content %}
+    <section class="order-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12" style="text-align: center; margin-bottom: 70px;">
+                            <h3 class="order-title">
+                                Вход в личный кабинет
+                            </h3>
+                            <div class="message">
+                                {% include 'messages.html' %}
+                                <p><b>ВАЖНО!</b> Логин и пароль высылается
+                                        на почту при первом оформление Диагностической карты. Если вы уже заказывали у
+                                        нас и потеряли/забыли пароль воспользуйтесь ссылкой <a
+                                                href="{% url 'restore_password' %}">восстановления
+                                            пароля.</a></p>
+
+                            </div>
+
+                            <div class="col-md-offset-3 col-md-6 col-sm-12">
+                                <form action method="post">
+                                    {% csrf_token %}
+                                    <div class="input-con">
+                                        {{ form.email.errors }}
+                                        <label for="id_email">Ваш e-mail</label>
+                                        {{ form.email }}
+                                    </div>
+                                    <div class="input-con">
+                                        {{ form.password.errors }}
+                                        <label for="id_password">Пароль</label>
+                                        <input type="password" id="id_password" name="password" class="field" required>
+                                    </div>
+                                    <button class="submit-btn" style="display: inline-block;" type="submit">ВОЙТИ В
+                                        КАБИНЕТ
+                                    </button>
+                                    <br>
+                                    <a href="{% url 'restore_password' %}" class="back">Восстановить пароль</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'footer.html' %}
+{% endblock %}
+

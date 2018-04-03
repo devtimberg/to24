@@ -1,0 +1,44 @@
+{% load static %}
+
+<footer>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>ДИАГНОСТИЧЕСКАЯ КАРТА <strong>ЗА 5 МИНУТ!</strong></h2>
+                <a class="order" href="{% url 'create_card' %}">ЗАРЕГИСТРИРОВАТЬ<br>ТЕХОСМОТР</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-lg-push-8 col-md-push-8 col-sm-push-8">
+                <p class="f-right">Мы в социальных сетях</p>
+                <div class="soc">
+                    <a href=""><img class="insta" src="{% static 'img/insta.png' %}" alt=""></a>
+                    <a href=""><img class="vk" src="{% static 'img/vk.png' %}" alt=""></a><br>
+                    <a href=""><img class="youtube" src="{% static 'img/youtube.png' %}" alt=""></a>
+                    <a href=""><img class="facebook" src="{% static 'img/facebook.png' %}" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <p class="a-desc">
+                    Атетстат наших партнеров<br/>
+                    <img src="{% static 'img/at.png' %}" alt="">
+                </p>
+
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-lg-pull-8 col-md-pull-8 col-sm-pull-8">
+                <a href="" class="f-logo"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                <p class="f-left">
+                    Наши телефоны: <br/>
+                    +7 (495) 768-18-87, 8-800-100-28-87 <br/>
+                    Email: info@то24.онлайн <br/>
+                </p>
+                <p class="f-left">
+                    © 2015-2017 <a href="">ТО24.ОНЛАЙН</a>. Все права защищены. <br/>
+                    <a href="">ТО24.ОНЛАЙН</a> - Диагностические карты онлайн на любой автотранспорт с доставкой по
+                    всей Россий
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

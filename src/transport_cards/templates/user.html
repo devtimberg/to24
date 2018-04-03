@@ -1,0 +1,11 @@
+{% if user.is_authenticated %}
+
+    <a href="{% url 'logout' %}" class="logout">Выйти</a>
+    <div class="lk">
+        <a href="{% url 'profile' %}">Личный кабинет</a>
+        <p>{{ request.user }}</p>
+    </div>
+
+{% else %}
+    <a href="{% url 'login' %}">Войти</a>
+{% endif %}
