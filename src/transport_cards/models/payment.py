@@ -15,7 +15,7 @@ class Price(models.Model):
         decimal_places=0,
         blank=False,
         default=0,
-        verbose_name='Цена',
+        verbose_name='Цена, сссука не подгружается',
     )
     category = models.CharField(
         choices=CATEGORIES.PTS,
@@ -36,7 +36,7 @@ class Price(models.Model):
         return 'Ценник для категории {}'.format(self.category)
 
     class Meta:
-        ordering = ['order']
+        # ordering = ['order']
         verbose_name = 'Ценник'
         verbose_name_plural = 'Ценники'
 

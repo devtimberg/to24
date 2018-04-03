@@ -17,6 +17,7 @@ __pycache__/
 *.txt
 .directory
 .vscode
+*.rdb
 
 
 local_settings.py

@@ -28,7 +28,9 @@ class CreateCardView(SuccessMessageMixin, CreateView):
         return kwargs
 
     def get_success_url(self):
+        form_user_email = self.get_form_kwargs()['data'].get('email')
+
         if self.request.user.is_authenticated:
             return self.object.get_payment_url()
 
-        return '{}?email={}'.format(reverse('login'), self.object.user.email)
+        return '{}?email={}'.format(reverse('login'), form_user_email)

@@ -31,7 +31,8 @@ class CreateCardForm(forms.ModelForm):
 
         # Правильное выставление категории вида A, B, C, D, E
         new_card.VehicleCategory = CATEGORIES.LINKED[new_card.VehicleCategory2]
-
+        print('NEW CARD:', new_card.VehicleCategory)
+        
         # Выставление срока годности карты
         specials = self.cleaned_data.get('specials')
         if specials:
@@ -47,10 +48,9 @@ class CreateCardForm(forms.ModelForm):
         # Выставление цены за карту в зависимости от категории
         price = Price.objects.get(category=new_card.VehicleCategory)
         new_card.payment_sum = price.sum
-
+        
         if commit:
             new_card.save()
-
         return new_card
 
     class Meta:

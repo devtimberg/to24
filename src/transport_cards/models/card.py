@@ -256,7 +256,7 @@ class TransportCard(BaseModel):
     )
 
     def __str__(self):
-        return 'Транспортная карта №{}'.format(self.pk)
+        return 'Транспортная карта №{}'.format(self.id)
 
     def get_full_model(self):
         return '{} {}'.format(self.Make, self.Model)
@@ -271,16 +271,19 @@ class TransportCard(BaseModel):
 
     def get_payment_url(self):
         return settings.PAYMENT_URL.format(
-            login=settings.ROBOKASSA['login'],
-            outsum=self.payment.sum,
-            inv=self.payment.id,
-            descr='Transport card pay',
-            signature=self.get_payment_signature()
+            login = settings.ROBOKASSA['login'],
+            outsum = self.payment.sum,
+            inv = self.payment.id,
+            descr = 'Transport card pay',
+            signature = self.get_payment_signature()
         )
 
     def create_payment(self):
-        price = Price.objects.get(category=self.VehicleCategory)
+        # Этот метод отрабатывает!
+        VehicleCategory = CATEGORIES.LINKED[self.VehicleCategory2]
+        price = Price.objects.get(category=VehicleCategory)
         Payment.objects.create(card=self, sum=price.sum)
+        
 
     class Meta:
         verbose_name = 'Транспортная карта'
