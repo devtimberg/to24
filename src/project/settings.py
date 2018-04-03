@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-from __future__ import unicode_literals
+# from __future__ import unicode_literals
 
 from os.path import dirname, join, abspath
 
@@ -79,7 +79,7 @@ AUTH_USER_MODEL = 'transport_cards.User'
 LOGIN_URL = reverse_lazy('login')
 
 LANGUAGE_CODE = 'ru-ru'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Almaty'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
@@ -104,7 +104,7 @@ CACHES = {
     }
 }
 
-DEBUG = False
+DEBUG = True
 
 LOG_DIR = join(BASE_DIR, 'logs')
 LOGGING = {
@@ -146,17 +146,19 @@ LOGGING = {
     },
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = ''
-EMAIL_HOST_USER = 'no-reaply@то24.онлайн'
-EMAIL_HOST_PASSWORD = 'vnHhfgZnZm2x'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'no-reply@xn--24-emcp.xn--80asehdb'
+EMAIL_HOST_PASSWORD = '521282'
+EMAIL_USE_TLS = True
 
 # Хост, для указания в поле from
-DEFAULT_FROM_EMAIL = 'no-reaply@то24.онлайн'
+DEFAULT_FROM_EMAIL = 'no-reply@xn--24-emcp.xn--80asehdb'
 
 # Хост для отображения в письмах
-EMAIL_HOST_FOR_MAILS = 'no-reaply@то24.онлайн'
+EMAIL_HOST_FOR_MAILS = 'no-reply@xn--24-emcp.xn--80asehdb'
+
 
 TO24_API = {
     'URL': '',
@@ -168,8 +170,16 @@ TO24_API = {
 
 ROBOKASSA = {}
 
+# REDIS/CELERY related settings 
+REDIS_HOST = 'localhost'
+REDIS_PORT = '6379'
+BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600} 
+
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+
+
 
 # URL для оплаты
 PAYMENT_URL = 'https://auth.robokassa.ru/Merchant/index.aspx?' \
@@ -184,18 +194,18 @@ try:
 except ImportError:
     print('Нет файла с локальными настройками')
 
-if EMAIL_BACKEND == 'django.core.mail.backends.smtp.EmailBackend':
-    if not (EMAIL_HOST and EMAIL_HOST_PASSWORD and EMAIL_HOST_USER and EMAIL_PORT):
-        raise NotImplementedError('Не указаны настройки SMTP')
+# if EMAIL_BACKEND == 'django.core.mail.backends.smtp.EmailBackend':
+#     if not (EMAIL_HOST and EMAIL_HOST_PASSWORD and EMAIL_HOST_USER and EMAIL_PORT):
+#         raise NotImplementedError('Не указаны настройки SMTP')
 
-if not EMAIL_HOST_FOR_MAILS:
-    raise NotImplementedError('Не указан хост для отображения в письмах')
+# if not EMAIL_HOST_FOR_MAILS:
+#     raise NotImplementedError('Не указан хост для отображения в письмах')
 
-if not TO24_API['LOGIN'] or not TO24_API['PASSWORD']:
-    raise NotImplementedError('Не указаны данные для входа на TO24_API')
+# if not TO24_API['LOGIN'] or not TO24_API['PASSWORD']:
+#     raise NotImplementedError('Не указаны данные для входа на TO24_API')
 
-# if not ROBOKASSA:
-#     raise ImportError('Не указаны параметры ROBOKASSA')
+if not ROBOKASSA:
+    raise ImportError('Не указаны параметры ROBOKASSA')
 
 if DEBUG:
     INSTALLED_APPS += [
@@ -232,3 +242,5 @@ else:
 
     if not ALLOWED_HOSTS:
         raise ValueError("Don't have any allowed hostnames")
+
+    

@@ -18,7 +18,7 @@ from .models import TransportCard
 from .serializers import TransportCardSerializer
 
 
-@app.task
+@app.task 
 def send_email_to_new_user(email, password):
     message_params = {
         'host': settings.EMAIL_HOST_FOR_MAILS,
@@ -32,7 +32,8 @@ def send_email_to_new_user(email, password):
         message=text,
         html_message=html_text,
         from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list=[email]
+        recipient_list=[email],
+        fail_silently=False,
     )
 
 
